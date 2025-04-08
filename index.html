@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Good Luck!</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: black; /* Black background */
+            overflow: hidden;
+            position: relative;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .message {
+            font-size: 3em;
+            color: #FF69B4; /* Pink text color */
+            text-align: center;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+            opacity: 0;
+            animation: fadeIn 2s forwards, typing 4s steps(10) forwards; /* Combined animations */
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: 0.15em solid #FF69B4; /* Pink caret */
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes typing {
+            from {
+                width: 0;
+            }
+            to {
+                width: 20ch; /* Adjust based on the length of your message */
+            }
+        }
+
+        @keyframes blink-caret {
+            from, to {
+                border-color: transparent;
+            }
+            50% {
+                border-color: #FF69B4; /* Pink caret */
+            }
+        }
+
+        .flower {
+            position: absolute;
+            top: -50px;
+            animation: fall linear infinite;
+            z-index: 0;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="message">Best of Luck!</div>
+
+    <script>
+        const flowerCount = 30; // Number of flowers
+        const flowerColors = ['#FFB6C1', '#FF69B4', '#FF1493', '#FF4500', '#FFD700'];
+
+        for (let i = 0; i < flowerCount; i++) {
+            const flower = document.createElement('div');
+            flower.className = 'flower';
+            flower.style.left = Math.random() * 100 + 'vw';
+            flower.style.animationDuration = Math.random() * 3 + 2 + 's'; // Random duration between 2s and 5s
+            flower.style.animationDelay = Math.random() * 5 + 's'; // Random delay
+            flower.style.color = flowerColors[Math.floor(Math.random() * flowerColors.length)];
+            flower.innerHTML = '🌸'; // Flower emoji
+            document.body.appendChild(flower);
+        }
+    </script>
+</body>
+</html>
